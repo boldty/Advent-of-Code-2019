@@ -20,6 +20,41 @@ def mul(i,l,a=0,b=0):
     i += 4
     return i,l
 
+def jumpIfTrue(i,l,a=0,b=0):
+    if a == 0 and l[l[i+1]] != 0:
+        return jumpFunc(i,l,b)
+    elif a != 0 and l[i+1] != 0:
+        return jumpFunc(i,l,b)
+    return i+3
+
+def jumpIfFalse(i,l,a=0,b=0):
+    if a == 0 and l[l[i+1]] == 0:
+        return jumpFunc(i,l,b)
+    elif a != 0 and l[i+1] == 0:
+        return jumpFunc(i,l,b)
+    return i+3
+
+def lessThan(i,l,a=0,b=0):
+    A = l[l[i+1]] if a == 0 else l[i+1]
+    B = l[l[i+2]] if b == 0 else l[i+2]
+    l[l[i+3]] = 1 if A < B else 0
+
+    i += 4
+    return i,l
+
+def equalsToo(i,l,a=0,b=0):
+    A = l[l[i+1]] if a == 0 else l[i+1]
+    B = l[l[i+2]] if b == 0 else l[i+2]
+    l[l[i+3]] = 1 if A == B else 0
+
+    i += 4
+    return i,l
+
+def jumpFunc(i,l,b):
+    if b == 0:
+        return l[l[i+2]]
+    return l[i+2]
+
 def output(i,l,val,c=0):
     if c==0:
         val = str(l[l[i+1]])
@@ -50,6 +85,14 @@ def run(l):
             i += 2
         elif par[4] == 4:
             i,l,val = output(i,l,val,par[2])
+        elif par[4] == 5:
+            i = jumpIfTrue(i,l,par[2],par[1])
+        elif par[4] == 6:
+            i = jumpIfFalse(i,l,par[2],par[1])
+        elif par[4] == 7:
+            i,l = lessThan(i,l,par[2],par[1])
+        elif par[4] == 8:
+            i,l = equalsToo(i,l,par[2],par[1])
         else:
             print("Faulty input")
             return -1
