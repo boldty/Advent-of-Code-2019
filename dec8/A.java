@@ -1,4 +1,3 @@
-package com.company;
 import java.io.*;
 
 public class A {
@@ -9,7 +8,7 @@ public class A {
         //Reading file
         String wd = System.getProperty("user.dir");
         System.out.println(wd);
-        File file = new File(wd + "\\src\\com\\company\\input.txt");
+        File file = new File(wd + "\\input.txt");
         BufferedReader br = new BufferedReader(new FileReader(file));
         String st = br.readLine();
 
@@ -29,4 +28,3 @@ public class A {
         System.out.println("Answer: " + list[index].chars().filter(ch -> ch == '1').count() * list[index].chars().filter(ch -> ch == '2').count());
     }
 }
-

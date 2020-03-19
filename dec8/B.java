@@ -1,5 +1,3 @@
-package com.company;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -13,7 +11,7 @@ public class B {
         //Reading file
         String wd = System.getProperty("user.dir");
         System.out.println(wd);
-        File file = new File(wd + "\\src\\com\\company\\input.txt");
+        File file = new File(wd + "\\input.txt");
         BufferedReader br = new BufferedReader(new FileReader(file));
         String st = br.readLine();
 
@@ -40,4 +38,3 @@ public class B {
         }
     }
 }
-
